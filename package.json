@@ -1,0 +1,29 @@
+{
+  "name": "jestArea",
+  "version": "1.0.0",
+  "description": "Learn how to use jest",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nate-luup/jestArea.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nate-luup/jestArea/issues"
+  },
+  "homepage": "https://github.com/nate-luup/jestArea#readme",
+  "dependencies": {
+    "axios": "^0.20.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "babel-jest": "^26.3.0",
+    "@babel/preset-typescript": "^7.10.4"
+  }
+}
