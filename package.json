@@ -4,7 +4,9 @@
   "description": "Learn how to use jest",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --watchAll",
+    "coverage": "jest --coverage",
+    "server": "node server/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,12 +20,17 @@
   },
   "homepage": "https://github.com/nate-luup/jestArea#readme",
   "dependencies": {
-    "axios": "^0.20.0"
+    "axios": "^0.20.0",
+    "koa": "^2.13.1",
+    "koa-router": "^10.0.0",
+    "koa-static": "^5.0.0",
+    "koa2-cors": "^2.0.6"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
+    "@babel/preset-typescript": "^7.10.4",
     "babel-jest": "^26.3.0",
-    "@babel/preset-typescript": "^7.10.4"
+    "jest": "^26.6.3"
   }
 }
