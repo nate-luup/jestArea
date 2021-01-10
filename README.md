@@ -407,6 +407,126 @@ test("fetchFourData 异步方法测试: async/await", async () => {
    - 异步 callback 中`done`方法的使用
    - 异步 promise 中`return`的使用
 
+# Jest 中的钩子函数
+
+- beforeAll
+- afterAll
+- beforeEach
+- afterEach
+
+## 代码示例
+
+- DaBaoJian.js
+
+```js
+export default class DaBaoJian {
+  gongzhu(number) {
+    this.user = number === 1 ? "大脚" : "刘英";
+  }
+  anjiao() {
+    this.fuwu = this.user + "走进房间为你足疗";
+  }
+  anmo() {
+    this.fuwu = this.user + "走进房间为你按摩";
+  }
+}
+```
+
+- DaBaoJian.test.js
+
+```js
+import DaBaoJian from "./DaBaoJian";
+
+const baojian = new DaBaoJian();
+
+beforeAll(() => {
+  console.log("beforeAll: 吃完饭后，走进了红浪漫洗浴");
+});
+beforeEach(() => {
+  console.log("beforeEach: 给了300元钱后");
+});
+test("大脚走进房间为你足疗", () => {
+  baojian.gongzhu(1);
+  baojian.anjiao();
+  console.log(baojian.fuwu);
+  expect(baojian.fuwu).toEqual("大脚走进房间为你足疗");
+});
+test("刘英走进房间为你按摩", () => {
+  baojian.gongzhu(2);
+  baojian.anmo();
+  console.log(baojian.fuwu);
+  expect(baojian.fuwu).toEqual("刘英走进房间为你按摩");
+});
+afterEach(() => {
+  console.log("afterEach: 完成后我心满意足的坐在沙发上");
+});
+afterAll(() => {
+  console.log("afterAll: 有钱人的生活就是这么枯燥且乏味");
+});
+```
+
+# 测试用例分组
+
+原始的办法是分两个测试文件去写测试用例，这样做不优雅
+
+- describe 将相关的测试用例放在一起
+
+```js
+describe("大脚相关服务", () => {
+  test("大脚走进房间为你足疗", () => {
+    baojian.gongzhu(1);
+    baojian.anjiao();
+    console.log(baojian.fuwu);
+    expect(baojian.fuwu).toEqual("大脚走进房间为你足疗");
+  });
+  test("大脚走进房间为你-泰式保健", () => {
+    baojian.gongzhu(1);
+    baojian.taishi();
+    console.log(baojian.fuwu);
+    expect(baojian.fuwu).toEqual("大脚走进房间为你-泰式保健");
+  });
+});
+```
+
+# 钩子函数的作用域
+
+- 钩子函数在父级分组可作用域子集，类似继承
+- 钩子函数同级分组作用域互不干扰，各起作用
+- 先执行外部的钩子函数，再执行内部的钩子函数
+
+```js
+import DaBaoJian from "./DaBaoJian";
+
+const baojian = new DaBaoJian();
+
+describe("父级分组", () => {
+  beforeAll(() => {
+    console.log("beforeAll: 吃完饭后，走进了红浪漫洗浴");
+  });
+
+  describe("大脚相关服务", () => {
+    beforeAll(() => {
+      console.log("beforeAll: 然后走进了666号房间");
+    });
+    test.only("大脚走进房间为你足疗", () => {
+      baojian.gongzhu(1);
+      baojian.anjiao();
+      console.log(baojian.fuwu);
+      expect(baojian.fuwu).toEqual("大脚走进房间为你足疗");
+    });
+    test("大脚走进房间为你-泰式保健", () => {
+      baojian.gongzhu(1);
+      baojian.taishi();
+      console.log(baojian.fuwu);
+      expect(baojian.fuwu).toEqual("大脚走进房间为你-泰式保健");
+    });
+    afterEach(() => {
+      console.log("大脚你服务的很好，给你30元小费");
+    });
+  });
+});
+```
+
 # 原理
 
 ## test 和 expect 方法
@@ -443,6 +563,8 @@ test("测试add数字字符串相加", () => {
 ```
 
 # Reference
+
+代码示例来源技术胖
 
 - [doc](https://jestjs.io/docs/zh-Hans/getting-started)
 - [一起学前端自动化测试 技术胖视频](https://www.bilibili.com/video/BV1yA411b7EV?p=1)
