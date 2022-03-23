@@ -1,5 +1,7 @@
 # 概念
 
+- [jest](https://jestjs.io/)
+
 - 单元测试：unit testing，软件中的最小可测试单元进行检查和验证（模块）
 - 集成测试：组装测试或联合测试，在单元测试的基础上将所有模块按照设计要求组装成一个子系统进行测试
 
@@ -30,19 +32,19 @@ npm i jest -D
 
 ```js
 function sum(a, b) {
-  return a + b;
+  return a + b
 }
-module.exports = sum;
+module.exports = sum
 ```
 
 5. 编写`sum.test.js`
 
 ```js
-const sum = require("./sum");
+const sum = require('./sum')
 
-test("adds 1 + 2 to equal 3", () => {
-  expect(sum(1, 2)).toBe(3);
-});
+test('adds 1 + 2 to equal 3', () => {
+  expect(sum(1, 2)).toBe(3)
+})
 ```
 
 6. 运行测试脚本
@@ -94,64 +96,64 @@ npx jest --coverage
 1. toBe: 绝对相等
 
 ```js
-test("toBe", () => {
-  expect(2 + 2).toBe(4);
-});
+test('toBe', () => {
+  expect(2 + 2).toBe(4)
+})
 ```
 
 2. toEqual: 判断引用值是否相等
 
 ```js
-test("toEqual", () => {
-  const data = { one: 1 };
-  data["two"] = 2;
-  expect(data).toEqual({ one: 1, two: 2 });
-});
+test('toEqual', () => {
+  const data = { one: 1 }
+  data['two'] = 2
+  expect(data).toEqual({ one: 1, two: 2 })
+})
 ```
 
 3. toBeNull: null 值匹配器
 
 ```js
-test("null", () => {
-  const n = null;
-  expect(n).toBeNull();
-});
+test('null', () => {
+  const n = null
+  expect(n).toBeNull()
+})
 ```
 
 4. toBeUndefined: undefined 匹配器
 
 ```js
-test("undefined", () => {
-  const n = undefined;
-  expect(n).toBeUndefined();
-});
+test('undefined', () => {
+  const n = undefined
+  expect(n).toBeUndefined()
+})
 ```
 
 5. toBeDefined: defined 匹配器
 
 ```js
-test("defined", () => {
-  const n = null;
-  expect(n).toBeDefined();
-});
+test('defined', () => {
+  const n = null
+  expect(n).toBeDefined()
+})
 ```
 
 6. toBeTruthy: 真值匹配器
 
 ```js
-test("toBeTruthy", () => {
-  const n = 1;
-  expect(n).toBeTruthy();
-});
+test('toBeTruthy', () => {
+  const n = 1
+  expect(n).toBeTruthy()
+})
 ```
 
 7. toBeTruthy: 假值假匹配器
 
 ```js
-test("toBeFalsy", () => {
-  const n = 0;
-  expect(n).toBeFalsy();
-});
+test('toBeFalsy', () => {
+  const n = 0
+  expect(n).toBeFalsy()
+})
 ```
 
 ## 数字
@@ -159,48 +161,48 @@ test("toBeFalsy", () => {
 8. toBeGreaterThan: 大于
 
 ```js
-test("toBeGreaterThan", () => {
-  const value = 2 + 2;
-  expect(value).toBeGreaterThan(3);
-});
+test('toBeGreaterThan', () => {
+  const value = 2 + 2
+  expect(value).toBeGreaterThan(3)
+})
 ```
 
 9. toBeLessThan: 小于
 
 ```js
-test("toBeLessThan", () => {
-  const value = 2 + 2;
-  expect(value).toBeLessThan(5);
-});
+test('toBeLessThan', () => {
+  const value = 2 + 2
+  expect(value).toBeLessThan(5)
+})
 ```
 
 10. toBeGreaterThanOrEqual: 大于等于
 
 ```js
-test("toBeGreaterThanOrEqual", () => {
-  const value = 2 + 2;
-  expect(value).toBeGreaterThanOrEqual(4);
-});
+test('toBeGreaterThanOrEqual', () => {
+  const value = 2 + 2
+  expect(value).toBeGreaterThanOrEqual(4)
+})
 ```
 
 11. toBeLessThanOrEqual: 小于等于
 
 ```js
-test("toBeLessThanOrEqual", () => {
-  const value = 2 + 2;
-  expect(value).toBeLessThanOrEqual(4.5);
-});
+test('toBeLessThanOrEqual', () => {
+  const value = 2 + 2
+  expect(value).toBeLessThanOrEqual(4.5)
+})
 ```
 
 12. toBeCloseTo
 
 ```js
-test("toBeCloseTo", () => {
+test('toBeCloseTo', () => {
   // 两个浮点数字相加
-  const value = 0.1 + 0.2;
+  const value = 0.1 + 0.2
   //expect(value).toBe(0.3);  // 这句会报错，因为浮点数有舍入误差
-  expect(value).toBeCloseTo(0.3); // 这句可以运行
-});
+  expect(value).toBeCloseTo(0.3) // 这句可以运行
+})
 ```
 
 ## 字符串
@@ -208,9 +210,9 @@ test("toBeCloseTo", () => {
 13. toMatch
 
 ```js
-test("toMatch", () => {
-  expect("Christoph").toMatch(/stop/);
-});
+test('toMatch', () => {
+  expect('Christoph').toMatch(/stop/)
+})
 ```
 
 ## 数组
@@ -219,17 +221,17 @@ test("toMatch", () => {
 
 ```js
 const shoppingList = [
-  "diapers",
-  "kleenex",
-  "trash bags",
-  "paper towels",
-  "beer",
-];
+  'diapers',
+  'kleenex',
+  'trash bags',
+  'paper towels',
+  'beer',
+]
 
-test("toContain", () => {
-  expect(shoppingList).toContain("beer");
-  expect(new Set(shoppingList)).toContain("beer");
-});
+test('toContain', () => {
+  expect(shoppingList).toContain('beer')
+  expect(new Set(shoppingList)).toContain('beer')
+})
 ```
 
 ## 异常
@@ -238,17 +240,17 @@ test("toContain", () => {
 
 ```js
 function compileAndroidCode() {
-  throw new Error("you are using the wrong JDK");
+  throw new Error('you are using the wrong JDK')
 }
 
-test("toThrow", () => {
-  expect(compileAndroidCode).toThrow();
-  expect(compileAndroidCode).toThrow(Error);
+test('toThrow', () => {
+  expect(compileAndroidCode).toThrow()
+  expect(compileAndroidCode).toThrow(Error)
 
   // You can also use the exact error message or a regexp
-  expect(compileAndroidCode).toThrow("you are using the wrong JDK");
-  expect(compileAndroidCode).toThrow(/JDK/);
-});
+  expect(compileAndroidCode).toThrow('you are using the wrong JDK')
+  expect(compileAndroidCode).toThrow(/JDK/)
+})
 ```
 
 ## 取反
@@ -256,9 +258,9 @@ test("toThrow", () => {
 16. not
 
 ```js
-test("not", () => {
-  expect(2 + 2).not.toBe(5);
-});
+test('not', () => {
+  expect(2 + 2).not.toBe(5)
+})
 ```
 
 # 让 jest 支持 import 和 es6 语法
@@ -275,16 +277,16 @@ npm i -D @babel/core @babel/preset-env babel-jest
 module.exports = {
   presets: [
     [
-      "@babel/preset-env",
+      '@babel/preset-env',
       {
         targets: {
-          node: "current",
+          node: 'current',
         },
       },
-      "@babel/preset-typescript",
+      '@babel/preset-typescript',
     ],
   ],
-};
+}
 ```
 
 babel-jest -> babel.config.js -> 执行代码转换 -> 运行测试代码
@@ -309,27 +311,27 @@ touch index.js
 
 ```js
 // index.js
-const koa = require("koa");
-const Router = require("koa-router");
-const cors = require("koa2-cors");
+const koa = require('koa')
+const Router = require('koa-router')
+const cors = require('koa2-cors')
 
-const app = new koa();
+const app = new koa()
 
-app.use(cors()); // 允许跨域
+app.use(cors()) // 允许跨域
 
-const router = new Router();
+const router = new Router()
 
-router.get("/news", (ctx, next) => {
+router.get('/news', (ctx, next) => {
   ctx.body = {
     success: true,
-  };
-});
+  }
+})
 
-app.use(router.routes()); //作用:启动路由
-app.use(router.allowedMethods()); //作用: 当请求出错时的处理逻辑
+app.use(router.routes()) //作用:启动路由
+app.use(router.allowedMethods()) //作用: 当请求出错时的处理逻辑
 app.listen(3000, () => {
-  console.log("starting at port 3000");
-});
+  console.log('starting at port 3000')
+})
 ```
 
 4. 启动 server
@@ -340,28 +342,28 @@ app.listen(3000, () => {
 1. fetchData.js
 
 ```js
-import axios from "axios";
+import axios from 'axios'
 
 // calback
 const fetchData = (callback) => {
-  axios.get("http://127.0.0.1:3000/news").then((response) => {
-    callback(response.data);
-  });
-};
+  axios.get('http://127.0.0.1:3000/news').then((response) => {
+    callback(response.data)
+  })
+}
 // promise
 const fetchTwoData = () => {
-  return axios.get("http://127.0.0.1:3000/news");
-};
+  return axios.get('http://127.0.0.1:3000/news')
+}
 // 404
 const fetchThreeData = () => {
-  return axios.get("http://127.0.0.1:3000/xxx");
-};
+  return axios.get('http://127.0.0.1:3000/xxx')
+}
 
 // async/await
 const fetchFourData = () => {
-  return axios.get("http://127.0.0.1:3000/news");
-};
-export { fetchData, fetchTwoData, fetchThreeData, fetchFourData };
+  return axios.get('http://127.0.0.1:3000/news')
+}
+export { fetchData, fetchTwoData, fetchThreeData, fetchFourData }
 ```
 
 2. fetchData.test.js
@@ -372,35 +374,35 @@ import {
   fetchTwoData,
   fetchThreeData,
   fetchFourData,
-} from "./fetchData";
-test("fetchData 异步方法测试: callback", (done) => {
+} from './fetchData'
+test('fetchData 异步方法测试: callback', (done) => {
   fetchData((data) => {
     expect(data).toEqual({
       success: true,
-    });
-    done();
-  });
-});
-test("fetchTwoData 异步方法测试: promise", () => {
+    })
+    done()
+  })
+})
+test('fetchTwoData 异步方法测试: promise', () => {
   return fetchTwoData().then((response) => {
     expect(response.data).toEqual({
       success: true,
-    });
-  });
-});
-test("fetchThreeData 异步方法测试: 404", () => {
-  expect.assertions(1); // 断言，必须执行一次expect
+    })
+  })
+})
+test('fetchThreeData 异步方法测试: 404', () => {
+  expect.assertions(1) // 断言，必须执行一次expect
   return fetchThreeData().catch((e) => {
     // Error: Request failed with status code 404
     // console.log(e.toString());
-    expect(e.toString().indexOf("404") > -1).toBe(true);
-  });
-});
+    expect(e.toString().indexOf('404') > -1).toBe(true)
+  })
+})
 
-test("fetchFourData 异步方法测试: async/await", async () => {
-  const response = await fetchFourData();
-  expect(response.data).toEqual({ success: true });
-});
+test('fetchFourData 异步方法测试: async/await', async () => {
+  const response = await fetchFourData()
+  expect(response.data).toEqual({ success: true })
+})
 ```
 
 3. 注意
@@ -421,13 +423,13 @@ test("fetchFourData 异步方法测试: async/await", async () => {
 ```js
 export default class DaBaoJian {
   gongzhu(number) {
-    this.user = number === 1 ? "大脚" : "刘英";
+    this.user = number === 1 ? '大脚' : '刘英'
   }
   anjiao() {
-    this.fuwu = this.user + "走进房间为你足疗";
+    this.fuwu = this.user + '走进房间为你足疗'
   }
   anmo() {
-    this.fuwu = this.user + "走进房间为你按摩";
+    this.fuwu = this.user + '走进房间为你按摩'
   }
 }
 ```
@@ -435,34 +437,34 @@ export default class DaBaoJian {
 - DaBaoJian.test.js
 
 ```js
-import DaBaoJian from "./DaBaoJian";
+import DaBaoJian from './DaBaoJian'
 
-const baojian = new DaBaoJian();
+const baojian = new DaBaoJian()
 
 beforeAll(() => {
-  console.log("beforeAll: 吃完饭后，走进了红浪漫洗浴");
-});
+  console.log('beforeAll: 吃完饭后，走进了红浪漫洗浴')
+})
 beforeEach(() => {
-  console.log("beforeEach: 给了300元钱后");
-});
-test("大脚走进房间为你足疗", () => {
-  baojian.gongzhu(1);
-  baojian.anjiao();
-  console.log(baojian.fuwu);
-  expect(baojian.fuwu).toEqual("大脚走进房间为你足疗");
-});
-test("刘英走进房间为你按摩", () => {
-  baojian.gongzhu(2);
-  baojian.anmo();
-  console.log(baojian.fuwu);
-  expect(baojian.fuwu).toEqual("刘英走进房间为你按摩");
-});
+  console.log('beforeEach: 给了300元钱后')
+})
+test('大脚走进房间为你足疗', () => {
+  baojian.gongzhu(1)
+  baojian.anjiao()
+  console.log(baojian.fuwu)
+  expect(baojian.fuwu).toEqual('大脚走进房间为你足疗')
+})
+test('刘英走进房间为你按摩', () => {
+  baojian.gongzhu(2)
+  baojian.anmo()
+  console.log(baojian.fuwu)
+  expect(baojian.fuwu).toEqual('刘英走进房间为你按摩')
+})
 afterEach(() => {
-  console.log("afterEach: 完成后我心满意足的坐在沙发上");
-});
+  console.log('afterEach: 完成后我心满意足的坐在沙发上')
+})
 afterAll(() => {
-  console.log("afterAll: 有钱人的生活就是这么枯燥且乏味");
-});
+  console.log('afterAll: 有钱人的生活就是这么枯燥且乏味')
+})
 ```
 
 # 测试用例分组
@@ -472,20 +474,20 @@ afterAll(() => {
 - describe 将相关的测试用例放在一起
 
 ```js
-describe("大脚相关服务", () => {
-  test("大脚走进房间为你足疗", () => {
-    baojian.gongzhu(1);
-    baojian.anjiao();
-    console.log(baojian.fuwu);
-    expect(baojian.fuwu).toEqual("大脚走进房间为你足疗");
-  });
-  test("大脚走进房间为你-泰式保健", () => {
-    baojian.gongzhu(1);
-    baojian.taishi();
-    console.log(baojian.fuwu);
-    expect(baojian.fuwu).toEqual("大脚走进房间为你-泰式保健");
-  });
-});
+describe('大脚相关服务', () => {
+  test('大脚走进房间为你足疗', () => {
+    baojian.gongzhu(1)
+    baojian.anjiao()
+    console.log(baojian.fuwu)
+    expect(baojian.fuwu).toEqual('大脚走进房间为你足疗')
+  })
+  test('大脚走进房间为你-泰式保健', () => {
+    baojian.gongzhu(1)
+    baojian.taishi()
+    console.log(baojian.fuwu)
+    expect(baojian.fuwu).toEqual('大脚走进房间为你-泰式保健')
+  })
+})
 ```
 
 # 钩子函数的作用域
@@ -495,36 +497,36 @@ describe("大脚相关服务", () => {
 - 先执行外部的钩子函数，再执行内部的钩子函数
 
 ```js
-import DaBaoJian from "./DaBaoJian";
+import DaBaoJian from './DaBaoJian'
 
-const baojian = new DaBaoJian();
+const baojian = new DaBaoJian()
 
-describe("父级分组", () => {
+describe('父级分组', () => {
   beforeAll(() => {
-    console.log("beforeAll: 吃完饭后，走进了红浪漫洗浴");
-  });
+    console.log('beforeAll: 吃完饭后，走进了红浪漫洗浴')
+  })
 
-  describe("大脚相关服务", () => {
+  describe('大脚相关服务', () => {
     beforeAll(() => {
-      console.log("beforeAll: 然后走进了666号房间");
-    });
-    test.only("大脚走进房间为你足疗", () => {
-      baojian.gongzhu(1);
-      baojian.anjiao();
-      console.log(baojian.fuwu);
-      expect(baojian.fuwu).toEqual("大脚走进房间为你足疗");
-    });
-    test("大脚走进房间为你-泰式保健", () => {
-      baojian.gongzhu(1);
-      baojian.taishi();
-      console.log(baojian.fuwu);
-      expect(baojian.fuwu).toEqual("大脚走进房间为你-泰式保健");
-    });
+      console.log('beforeAll: 然后走进了666号房间')
+    })
+    test.only('大脚走进房间为你足疗', () => {
+      baojian.gongzhu(1)
+      baojian.anjiao()
+      console.log(baojian.fuwu)
+      expect(baojian.fuwu).toEqual('大脚走进房间为你足疗')
+    })
+    test('大脚走进房间为你-泰式保健', () => {
+      baojian.gongzhu(1)
+      baojian.taishi()
+      console.log(baojian.fuwu)
+      expect(baojian.fuwu).toEqual('大脚走进房间为你-泰式保健')
+    })
     afterEach(() => {
-      console.log("大脚你服务的很好，给你30元小费");
-    });
-  });
-});
+      console.log('大脚你服务的很好，给你30元小费')
+    })
+  })
+})
 ```
 
 # 原理
@@ -533,33 +535,33 @@ describe("父级分组", () => {
 
 ```js
 function add(num1, num2) {
-  return num1 + num2;
+  return num1 + num2
 }
 
 function test(title, fn) {
   try {
-    fn();
-    console.log(title, "测试通过");
+    fn()
+    console.log(title, '测试通过')
   } catch (error) {
-    console.log(error);
-    console.error(title, "测试失败");
+    console.log(error)
+    console.error(title, '测试失败')
   }
 }
 function expect(ret) {
   return {
     toBe: function (arg) {
       if (ret != arg) {
-        throw Error(`预计和实际不符，预计:${arg}，实际:${ret}`);
+        throw Error(`预计和实际不符，预计:${arg}，实际:${ret}`)
       }
     },
-  };
+  }
 }
-test("测试add数字相加", () => {
-  expect(add(1, 2)).toBe(3);
-});
-test("测试add数字字符串相加", () => {
-  expect(add("1", "2")).toBe(3);
-});
+test('测试add数字相加', () => {
+  expect(add(1, 2)).toBe(3)
+})
+test('测试add数字字符串相加', () => {
+  expect(add('1', '2')).toBe(3)
+})
 ```
 
 # Reference
